@@ -2,13 +2,13 @@
 import { ref } from 'vue';
 import type { Todo } from '@/stores/todo.type';
 import { useTodosStore } from '@/stores/todos';
-import EditTodoDialog from '@/components/EditTodoDialog.vue';
+import EditTodoForm from '@/components/EditTodoForm.vue';
 
 const store = useTodosStore();
 const { id, name } = defineProps<Todo>();
 const showDialog = ref(false);
 
-const openDialog = () => (showDialog.value = true);
+const toggleDialog = () => (showDialog.value = !showDialog.value);
 const removeTodo = () => store.remove(id);
 </script>
 
@@ -21,7 +21,7 @@ const removeTodo = () => store.remove(id);
         icon="mdi-note-edit-outline"
         size="x-large"
         color="primary"
-        @click="openDialog"
+        @click="toggleDialog"
       ></v-btn>
       <v-btn
         density="compact"
@@ -32,7 +32,9 @@ const removeTodo = () => store.remove(id);
       ></v-btn>
     </v-card-actions>
   </v-card>
-  <EditTodoDialog v-model="showDialog" :id :name />
+  <v-dialog v-model="showDialog" max-width="600" opacity=".1">
+    <EditTodoForm :id :name @done="toggleDialog" />
+  </v-dialog>
 </template>
 
 <style module>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import AddTodoDialog from '@/components/AddTodoDialog.vue';
+import AddTodoForm from '@/components/AddTodoForm.vue';
 
 const showDialog = ref(false);
 
-const openDialog = () => (showDialog.value = true);
+const toggleDialog = () => (showDialog.value = !showDialog.value);
 </script>
 
 <template>
@@ -14,7 +14,9 @@ const openDialog = () => (showDialog.value = true);
     color="primary"
     variant="flat"
     size="x-large"
-    @click="openDialog"
+    @click="toggleDialog"
   ></v-btn>
-  <AddTodoDialog v-model="showDialog" />
+  <v-dialog v-model="showDialog" max-width="600" opacity=".1">
+    <AddTodoForm @done="toggleDialog" />
+  </v-dialog>
 </template>
