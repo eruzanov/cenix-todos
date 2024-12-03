@@ -12,5 +12,9 @@ export const useTodosStore = defineStore(LABEL_STORE, () => {
     todos.value = todos.value.concat({ id: uuidv4(), name });
   }
 
-  return { todos, add };
+  function remove(id: Todo['id']) {
+    todos.value = todos.value.filter((todo) => todo.id !== id);
+  }
+
+  return { todos, add, remove };
 });
