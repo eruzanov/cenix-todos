@@ -16,5 +16,9 @@ export const useTodosStore = defineStore(LABEL_STORE, () => {
     todos.value = todos.value.filter((todo) => todo.id !== id);
   }
 
-  return { todos, add, remove };
+  function update({ id, name }: Todo) {
+    todos.value = todos.value.map((todo) => (todo.id === id ? { id, name } : todo));
+  }
+
+  return { todos, add, remove, update };
 });
