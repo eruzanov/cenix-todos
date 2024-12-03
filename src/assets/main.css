@@ -1,0 +1,12 @@
+#app {
+  margin: 0 auto;
+  padding: 1rem 0.5rem 4rem;
+  font-weight: normal;
+}
+
+@media (min-width: 600px) {
+  #app {
+    max-width: 800px;
+    min-width: 600px;
+  }
+}
