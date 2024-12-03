@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import AddTodo from '@/components/AddTodo.vue';
+import TodosList from '@/components/TodosList.vue';
+</script>
+
 <template>
-  <h1>cenix-todos</h1>
+  <AddTodo />
+  <TodosList />
 </template>
