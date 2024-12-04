@@ -13,10 +13,14 @@ const store = useTodosStore();
     <AddTodo />
   </header>
   <template v-if="store.searchQuery">
-    <TodosList :todos="store.searchResult" />
+    <TodosList :todos="store.searchResult">
+      По вашему запросу ничего не нашлось
+    </TodosList>
   </template>
   <template v-else>
-    <TodosList :todos="store.todos" />
+    <TodosList :todos="store.todos">
+      Пока нет ни одной записи
+    </TodosList>
   </template>
 </template>
 

@@ -28,4 +28,5 @@ watch(paginationLength, () => {
       </template>
     </v-data-iterator>
   </template>
+  <slot v-else></slot>
 </template>
